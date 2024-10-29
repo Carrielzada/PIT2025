@@ -60,7 +60,7 @@ class TramitarServController {
                 return res.status(400).json({ message: `Secretaria com ID ${id_secretaria} não encontrada` });
             }
     
-            // Criar e adicionar a tramitação
+            // Alteração na ordem para fins de praticidade
             const tramitacao = new TramitarServModel(0, id_servico, id_secretaria, msg_motivo);
             await tramitarServModel.adicionar(tramitacao);
     

@@ -1,4 +1,3 @@
-// TramitarServModel.js
 const Database = require("../database");
 const database = new Database();
 
@@ -10,6 +9,9 @@ class TramitarServModel {
         this.msg_motivo = msg_motivo;
     }
 
+    // obterTodos precisa mesclar os dados das tabelas para funcinar
+    // corrigido: dados de id_servico estavam sendo puxados do endpoint /servico
+    // agora estão sendo puxados de agserv_servico_id
     async obterTodos() {
         const listaTramitacoes = await database.ExecutaComando(`
             SELECT 
@@ -64,7 +66,7 @@ class TramitarServModel {
             [dadosTramitacao.id_servico, dadosTramitacao.id_secretaria, dadosTramitacao.msg_motivo]
         );
     }
-    
+
 
     async atualizar(id, dadosTramitacao) {
         await database.ExecutaComandoNonQuery(
